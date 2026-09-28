@@ -7,6 +7,15 @@ description: Apply named, versioned colour grades ("looks") to image frames from
 
 A look registry plus one script. Needs ffmpeg; `--compare` needs Pillow.
 
+## Environment (once per machine)
+
+```bash
+python3 -m venv ~/.venvs/creative-skills
+~/.venvs/creative-skills/bin/pip install numpy pillow opencv-python-headless scipy
+```
+
+Run every script with `~/.venvs/creative-skills/bin/python` (system Python usually lacks these packages).
+
 ## Setup
 
 Copy `looks.example.json` to the project as `looks.json` (or point `LOOKS_FILE` at it) and edit the looks. Each look has a `version`, `notes`, and either `filter` (an ffmpeg `-vf` chain) or `filter_complex` (a graph whose input is `[0]`). Keep old versions under `history` with a one-line `why`.
@@ -14,9 +23,9 @@ Copy `looks.example.json` to the project as `looks.json` (or point `LOOKS_FILE` 
 ## Use
 
 ```bash
-python3 scripts/grade.py --list
-python3 scripts/grade.py 2027 frames/frame07.png frames/frame09.png --compare before_after.jpg
-python3 scripts/grade.py --restore frames/frame07.png      # back to the master
+~/.venvs/creative-skills/bin/python scripts/grade.py --list
+~/.venvs/creative-skills/bin/python scripts/grade.py 2027 frames/frame07.png frames/frame09.png --compare before_after.jpg
+~/.venvs/creative-skills/bin/python scripts/grade.py --restore frames/frame07.png      # back to the master
 ```
 
 - First grade of a file copies the original to `<dir>/_ungraded/`. Every later grade starts from that master, so re-running is safe and a retuned look simply re-applies.

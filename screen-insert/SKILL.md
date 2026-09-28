@@ -7,6 +7,15 @@ description: Put footage onto green (#00FF00) screens in rendered frames — TVs
 
 Deterministic keying of footage into #00FF00 screen areas, with an optional period picture-tube look. Python with numpy + Pillow; OpenCV (`opencv-python-headless`) for the perspective warp on tilted screens; scipy for `--region`.
 
+## Setup (once per machine)
+
+```bash
+python3 -m venv ~/.venvs/creative-skills
+~/.venvs/creative-skills/bin/pip install numpy pillow opencv-python-headless scipy
+```
+
+Run every script with `~/.venvs/creative-skills/bin/python` (system Python usually lacks these packages).
+
 ## Scripts (`scripts/`)
 
 | Script | Does |
@@ -16,7 +25,7 @@ Deterministic keying of footage into #00FF00 screen areas, with an optional peri
 | `pullback.py FRAME INSERT PREFIX` | Tight-to-wide square crops of a frame with a green device, the insert keyed sharp into each; `--plate TV` puts every step on a TV. |
 | `sheet.py OUT.jpg FILES...` | Contact sheet. `--square` shows each frame's centred 1:1 crop, `--safe` outlines it. |
 
-Run `python3 scripts/<name>.py -h` for every option.
+Run `~/.venvs/creative-skills/bin/python scripts/<name>.py -h` for every option.
 
 ## Workflow
 
