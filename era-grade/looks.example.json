@@ -1,0 +1,22 @@
+{
+  "looks": {
+    "2027": {
+      "version": 2,
+      "filter": "eq=saturation=0.68:contrast=0.98,colorbalance=rs=-0.03:bs=0.035:rm=-0.02:bm=0.03:rh=-0.01:bh=0.02",
+      "notes": "Drained greige present day: less saturation, slightly cool whites and shadows, near-normal contrast.",
+      "history": [
+        {"version": 1, "filter": "eq=saturation=0.45:contrast=0.95,colorbalance=rs=-0.04:bs=0.05:rm=-0.03:bm=0.04:rh=-0.02:bh=0.03", "why": "read too muted on skin"}
+      ]
+    },
+    "1957": {
+      "version": 1,
+      "filter": "hue=s=0",
+      "notes": "Pure black-and-white period frames."
+    },
+    "1957-keep-green": {
+      "version": 1,
+      "filter_complex": "[0]format=rgba,split=3[o1][o2][o3];[o1]hue=s=0[g];[o2]colorkey=0x00FF00:0.35:0.05,alphaextract,format=gray[m];[g][m]alphamerge[ga];[o3][ga]overlay",
+      "notes": "Black-and-white everywhere except #00FF00 key screens, which stay green for compositing."
+    }
+  }
+}
